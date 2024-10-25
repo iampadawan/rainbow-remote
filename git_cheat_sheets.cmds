@@ -1,0 +1,90 @@
+\git --version
+git config --global --list
+less ~/.gitconfig
+git config --global user.name "Stanislav Karasev"
+git config --global user.email "iampadawan@gmail.com"
+git init -b main 
+git config --global init.defaultBranch "main"
+git log --oneline --graph
+git commit -m "orange"
+git cat-file -p d1b547f495f4267e41d6b3c3ce63d241176a0a8a    # Команда для просмотра родителей коммита
+git cat-file -p d1b547f      # Команда для просмотра родителей коммита
+git branch
+git branch feature
+git switch feature
+git checkout feature
+git merge feature
+git switch -c namebranch
+git checkout -b namebranch
+git remote
+git remote -v
+git remote add origin https://github.com/iampadawan/rainbow-remote.git
+ls -la ./.git/refs
+git push origin main
+git branch --all
+git push origin -d feature     # команда удалит удалённую ветку с названием feature из репозитория на сервере origin
+git branch -d feature
+git branch -vv
+git config --global credential.helper store
+cat ~/.git-credentials
+git clone https://github.com/iampadawan/rainbow-remote.git friend-rainbow
+git fetch -p      # Стирает ветки удаленного(remote) отслеживания, соответствующие стертым удалённым(remote) веткам, и загружает данные из удалённого(remote) репозитория
+git branch -d feature
+git remote show origin
+git branch -u origin/main     # Определяет восходящую ветку для текущей локальной ветки.
+git push
+git fetch
+git pull
+git merge --abort
+git restore --staged rainbowcolors.txt
+git reset HEAD rainbowcolors.txt
+git rebase origin/main
+git rebase --continue
+git push --set-upstream origin topic    #отправите локальную ветку в удаленный репозиторий и определите для нее вышестоящую ветку.
+git pull -p    # для избавления от всех ветвей удаленного отслеживания, соответствующих ветвям, которые были "стерты" в удаленном репозитории.
+git branch -d topic
+
+=========== Краткий справочник по командам ================================================================================================
+git config --global --list     # Перечислить переменные в глобальном файле конфигурации Git и их значения
+git config --global user.name <name>    # Установить свое имя в глобальном файле конфигурации Git
+git config --global user.email <email>    # Установить свой адрес электронной почты в глобальном файле конфигурации Git
+git init     # Инициализировать репозиторий Git
+git init -b <name_branch>    # Инициализировать репозиторий Git и установить имя начальной ветки
+git status     # Показать состояние рабочего каталога и промежуточной области
+git add <file_name>    # Добавить один файл в промежуточную область
+git add <file_name1> <file_name2>...    # Добавить несколько файлов в промежуточную область
+git add -A     # Добавить все файлы в рабочем каталоге, котарые были отредактированы или изменены, в промежуточную область
+git commit -m "<message>"    # Создать новый коммит с сообщением о коммите
+git log     # Показать список коммитов в обратном хронологическом порядке
+git branch      # Вывести список локальных веток
+git branch <new_branch_name>    # Создать ветку
+git switch <branch_name>    # Переключить ветку
+git checkout <branch_name>    # Переключить ветку
+git merge <branch_name>      # Интегрировать изменения из одной ветки в другую ветку
+git log --all       # Показать список коммитов в обратном хронологическом порядке для всех веток локального репозитория
+git log -all --graph      # Показать список коммитов в обратном хронологическом порядке для всех веток локального репозитория, в виде графика
+git checkout <hash_commit>     # Проверить коммит. Перейдёт в режим отсоеденённой головы HEAD
+git switch -c <new_branch_name>     # Создать новую ветку и переключиться на нее
+git checkout -b <new_branch_name>      # Создать новую ветку и переключиться на нее
+git push     # Загрузить данные в удаленный репозиторий
+git remote add <short_name> <URL>     # Добавить подключение к удаленному репозиторию с именем <short_name> по адресу <URL>
+git remote     # Вывести список подключений к удаленному репозиторию, хранящихся в локальном репозитории, отсортированный по короткому имени
+git remote -v     # Вывести список подключений к удаленному репозиторию, хранящихся в локальном репозитории с короткими именами и URL-адресами
+git push <short_name> <branch_name>     # Загрузить контент из <branch_name> в удаленный репозиторий <short_name>
+git branch --all    # Вывести список локальных веток и веток удаленного отслеживания
+git clone <URL> <dir_name>    # Клонировать удаленный репозиторий
+git push <short_name> -d <branch_name>     # "Стереть" удаленную ветку и связанную с ней ветку удаленного отслеживания
+git branch -d <branch_name>      # Удалить локальную ветку
+git branch -vv     # Перечислить локальные ветки и их вышестоящие ветки, если они есть
+git fetch <short_name>     # Загрузить данные из удаленного репозитория <short_name>
+git fetch     # Загрузить данные из удаленного репозитория origin
+git fetch -p      # "Стереть" ветки удаленного отслеживания, соответствующие "стертым" удаленным веткам, и загрузить данные из удаленного репозитория
+git branch -u <short_name>/<branch_name>      # Определить вышестоящую ветку для текущей локальной ветки
+git pull <short_name> <branch_name>      #Получить и интегрировать изменения из удаленного репозитория <short_name> для указанной ветки <branch_name>
+git pull      # Если для текущей ветки определена восходящая ветка, извлечь и интегрировать изменения из этой восходящей ветки
+git merge --abort     # Остановить процесс слияния и вернуться в состояние до слияния
+git rebase <branch_name>      # Повторно применить коммиты поверх другой ветки (Перебазирование)
+git restore --staged <file_name>     # Восстановить файл до предидущей версии файла в промежуточной области
+git rebase --continue     # Продолжить процесс перебазирования после разрешения конфликтов слияния
+git rebase --abort      # Остановить процесс перебазирования и вернуться в состояние до перебазирования
+
